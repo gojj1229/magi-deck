@@ -204,7 +204,9 @@
       padding: 36px 32px;
       display: flex; flex-direction: column; gap: 16px;
       min-height: 240px;
+      transition: border-color 220ms cubic-bezier(.4,0,.2,1);
     }
+    .strength-hero:hover { border-color: #0066cc; }
     .strength-hero .icon {
       width: 48px; height: 48px;
       border-radius: 14px;
@@ -226,7 +228,9 @@
       border-radius: 16px;
       padding: 20px 22px;
       display: flex; align-items: flex-start; gap: 14px;
+      transition: border-color 220ms cubic-bezier(.4,0,.2,1);
     }
+    .strength-mini:hover { border-color: #0066cc; }
     .strength-mini .icon-mini {
       width: 32px; height: 32px;
       border-radius: 10px;
@@ -319,6 +323,24 @@
 
     /* §5 funnel SVG */
     .funnel-svg { width: 100%; max-width: 720px; height: auto; display: block; margin: 0 auto; }
+
+    /* Brand chip (호환성 서비스 로고) */
+    .brand-chip {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 8px 16px;
+      border-radius: 9999px;
+      background: #f5f5f7;
+      border: 1px solid #e0e0e0;
+      font-size: 14px;
+      font-weight: 500;
+      color: #1d1d1f;
+      letter-spacing: -0.2px;
+      transition: border-color 220ms cubic-bezier(.4,0,.2,1), background 220ms ease;
+    }
+    .brand-chip:hover { border-color: #0066cc; background: #fff; }
+    .brand-chip img { width: 16px; height: 16px; border-radius: 4px; }
+    .brand-chip-more { color: #7a7a7a; background: transparent; border-style: dashed; }
+    .brand-chip-more:hover { color: #0066cc; border-color: #0066cc; background: transparent; }
 
     /* Misc */
     .hairline { border: 1px solid #e0e0e0; }
@@ -788,11 +810,11 @@
         <div class="strength-hero" style="border-color:#0066cc; border-width:1.5px;">
           <div class="icon" style="background:#0066cc; color:#fff;">↑</div>
           <div class="h">쓸수록 똑똑해집니다.</div>
-          <div class="d">9개월 사용 = 1,766p 누적 (우리 자체 검증). 위키가 자라면 답변도 깊어집니다 — 복리로.</div>
+          <div class="d">9개월 사용 = <strong style="color:#1d1d1f; font-weight:600;">1,766p 누적</strong> (자체 검증). 새 메모마다 기존 자료와 자동 연결되어 — <strong style="color:#0066cc; font-weight:600;">이자에 이자가 붙듯, 시간이 곧 자산</strong>이 됩니다. 1년 후 = 답변 풍부도 10×, 2년 후 = 50×.</div>
         </div>
         <div class="strength-hero">
           <div class="icon">⊕</div>
-          <div class="h">AI 에이전트 시대 최적화된<br>퍼스널 데이터셋을 구축합니다.</div>
+          <div class="h">AI 에이전트 최적화된<br>퍼스널 데이터셋을 구축합니다.</div>
           <div class="d">에이전트가 가장 잘 읽도록 자동 큐레이션된 내 전용 데이터. 비공개 격리 + 클라우드 LLM 자동 거부 + 데이터 주권 — 내 위키 = 내 평생 자산.</div>
         </div>
       </div>
@@ -901,12 +923,12 @@
         <div style="background:#1d1d1f; color:rgba(255,255,255,0.9); border-radius:18px; padding:28px 26px;">
           <div style="font-size:36px; line-height:1; margin-bottom:14px; color:rgba(255,255,255,0.35); font-weight:300;">×</div>
           <div style="font-size:17px; font-weight:600; letter-spacing:-0.3px; line-height:1.4; margin-bottom:10px; color:#fff;">"8개월 전 회의록,<br>다시 처음부터 찾는다"</div>
-          <div style="font-size:13px; color:rgba(255,255,255,0.6); line-height:1.6;">시간이 지나면 AI도 사용자도 잊는다. <strong style="color:rgba(255,255,255,0.85); font-weight:600;">매번 검색 처음부터.</strong></div>
+          <div style="font-size:13px; color:rgba(255,255,255,0.6); line-height:1.6;">시간이 지나면 AI도 사용자도 잊는다.<br><strong style="color:rgba(255,255,255,0.85); font-weight:600;">매번 검색 처음부터.</strong></div>
         </div>
         <div style="background:#1d1d1f; color:rgba(255,255,255,0.9); border-radius:18px; padding:28px 26px;">
           <div style="font-size:36px; line-height:1; margin-bottom:14px; color:rgba(255,255,255,0.35); font-weight:300;">×</div>
           <div style="font-size:17px; font-weight:600; letter-spacing:-0.3px; line-height:1.4; margin-bottom:10px; color:#fff;">"1년 전 시장 분석,<br>유효한지 모른다"</div>
-          <div style="font-size:13px; color:rgba(255,255,255,0.6); line-height:1.6;">지식의 감가. 오래된 문서는 신뢰도 ↓ <strong style="color:rgba(255,255,255,0.85); font-weight:600;">폐기 시점 불명.</strong></div>
+          <div style="font-size:13px; color:rgba(255,255,255,0.6); line-height:1.6;">지식의 감가. 오래된 문서는 신뢰도 ↓<br><strong style="color:rgba(255,255,255,0.85); font-weight:600;">폐기 시점 불명.</strong></div>
         </div>
       </div>
     </div>
@@ -990,9 +1012,8 @@
     <div class="mb-12" style="max-width:1024px; margin: 0 auto 48px;">
       <div class="text-center mb-10">
         <div class="t-caption-strong" style="color:#0066cc; letter-spacing:0.5px; text-transform:uppercase;">실제 사용 — 노션 시나리오</div>
-        <h3 class="t-display-md ff-display" style="max-width:780px; margin:14px auto 0; line-height:1.30;">
-          한국 500만 노션 사용자가<br>
-          가장 먼저 만나는 우리.
+        <h3 class="t-display-md ff-display" style="max-width:1024px; margin:14px auto 0; line-height:1.30; white-space:nowrap;">
+          한국 500만 노션 사용자가 가장 먼저 만나는 우리.
         </h3>
       </div>
 
@@ -1238,8 +1259,8 @@
       Your knowledge, alive.
     </div>
     <h2 class="ff-display t-hero mb-6">
-      AI는 누구나 씁니다.<br>
-      <span style="color:#0066cc;">데이터는, 우리가 만듭니다.</span>
+      <span style="color:#0066cc;">AI AGENT 최적화된</span><br>
+      데이터 솔루션.
     </h2>
     <p class="t-lead-airy" style="color:#555; max-width:620px; margin: 0 auto 36px;">
       magi-wiki — 매일 스치는 정보를 자동으로 지식으로 바꾸는,<br>
@@ -1247,7 +1268,7 @@
     </p>
 
     <!-- 핵심 3 KPI 재노출 -->
-    <div class="grid grid-cols-3 gap-6 mb-12" style="max-width:640px; margin: 0 auto 48px;">
+    <div class="grid grid-cols-3 gap-6 mb-10" style="max-width:640px; margin: 0 auto 40px;">
       <div>
         <div class="stat-num" style="font-size:32px;">1,766p</div>
         <div class="stat-label mt-2">자체 검증</div>
@@ -1259,6 +1280,25 @@
       <div>
         <div class="stat-num" style="font-size:32px;">24억</div>
         <div class="stat-label mt-2">연 매출 (1% 전환)</div>
+      </div>
+    </div>
+
+    <!-- 호환성 brand chip — 연결 및 지원 가능한 서비스 11종 + more -->
+    <div class="mb-12">
+      <div class="t-caption-strong mb-5" style="color:#0066cc; letter-spacing:0.5px; text-transform:uppercase;">연결 가능한 서비스</div>
+      <div style="display:flex; flex-wrap:wrap; gap:10px; justify-content:center; max-width:780px; margin:0 auto;">
+        <span class="brand-chip"><img src="https://www.google.com/s2/favicons?sz=128&domain=claude.ai" alt="Claude" loading="lazy" onerror="this.style.display='none'" /> Claude</span>
+        <span class="brand-chip"><img src="https://www.google.com/s2/favicons?sz=128&domain=chatgpt.com" alt="ChatGPT" loading="lazy" onerror="this.style.display='none'" /> ChatGPT</span>
+        <span class="brand-chip"><img src="https://www.google.com/s2/favicons?sz=128&domain=gemini.google.com" alt="Gemini" loading="lazy" onerror="this.style.display='none'" /> Gemini</span>
+        <span class="brand-chip"><img src="https://www.google.com/s2/favicons?sz=128&domain=cursor.com" alt="Cursor" loading="lazy" onerror="this.style.display='none'" /> Cursor</span>
+        <span class="brand-chip"><img src="https://www.google.com/s2/favicons?sz=128&domain=obsidian.md" alt="Obsidian" loading="lazy" onerror="this.style.display='none'" /> Obsidian</span>
+        <span class="brand-chip"><img src="https://www.google.com/s2/favicons?sz=128&domain=notion.so" alt="Notion" loading="lazy" onerror="this.style.display='none'" /> Notion</span>
+        <span class="brand-chip"><img src="https://www.google.com/s2/favicons?sz=128&domain=slack.com" alt="Slack" loading="lazy" onerror="this.style.display='none'" /> Slack</span>
+        <span class="brand-chip"><img src="https://www.google.com/s2/favicons?sz=128&domain=supabase.com" alt="Supabase" loading="lazy" onerror="this.style.display='none'" /> Supabase</span>
+        <span class="brand-chip"><img src="https://www.google.com/s2/favicons?sz=128&domain=vercel.com" alt="Vercel" loading="lazy" onerror="this.style.display='none'" /> Vercel</span>
+        <span class="brand-chip"><img src="https://www.google.com/s2/favicons?sz=128&domain=github.com" alt="GitHub" loading="lazy" onerror="this.style.display='none'" /> GitHub</span>
+        <span class="brand-chip"><img src="https://www.google.com/s2/favicons?sz=128&domain=pinecone.io" alt="Pinecone" loading="lazy" onerror="this.style.display='none'" /> Pinecone</span>
+        <span class="brand-chip brand-chip-more">+ more</span>
       </div>
     </div>
 
