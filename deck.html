@@ -356,6 +356,129 @@
       .global-nav, .sub-nav { display: none; }
       .tile { padding: 60px 0; page-break-inside: avoid; }
     }
+
+    /* =============================================== */
+    /*   Mobile optimization (≤ 768px)                 */
+    /* =============================================== */
+    @media (max-width: 768px) {
+      /* Section vertical rhythm */
+      .tile { padding: 56px 0; }
+
+      /* Containers — tighter side gutters */
+      .container-page,
+      .container-tile,
+      .container-narrow { padding: 0 16px; }
+
+      /* Typography (clamp 없는 항목 + pullquote inline overrides) */
+      .t-lead        { font-size: 19px; line-height: 1.4; letter-spacing: 0; }
+      .t-lead-airy   { font-size: 17px; line-height: 1.55; }
+      .t-tagline     { font-size: 17px; }
+      .t-body        { font-size: 15px; line-height: 1.55; }
+      .t-body-strong { font-size: 15px; }
+      .pullquote     { font-size: 19px !important; line-height: 1.4 !important; letter-spacing: -0.2px !important; }
+
+      /* Section number badge */
+      .section-num { width: 32px; height: 32px; font-size: 13px; margin-bottom: 12px; }
+
+      /* Stats */
+      .stat-num { font-size: 30px !important; }
+      .stat-label { font-size: 11px; }
+
+      /* Buttons */
+      .btn-primary,
+      .btn-secondary-pill,
+      .btn-on-dark { padding: 11px 18px; font-size: 15px; }
+
+      /* Cards — class-based base */
+      .card             { padding: 22px 18px; border-radius: 14px; }
+      .card-dark        { padding: 22px 18px; border-radius: 14px; }
+      .card-hero        { padding: 26px 20px; border-radius: 16px; }
+      .card-hero-dark   { padding: 26px 20px; border-radius: 16px; }
+      .strength-hero    { padding: 22px 20px; min-height: auto; gap: 12px; border-radius: 16px; }
+      .strength-hero .h { font-size: 18px; line-height: 1.3; }
+      .strength-hero .d { font-size: 14px; line-height: 1.55; }
+      .strength-hero .icon { width: 42px; height: 42px; font-size: 19px; }
+      .strength-mini    { padding: 16px 16px; border-radius: 12px; gap: 12px; }
+      .limit-card       { padding: 20px 18px; gap: 10px; border-radius: 14px; }
+      .limit-card .platform { font-size: 15px; }
+      .limit-card .strength { font-size: 12.5px; }
+      .limit-card .limits { font-size: 12.5px; }
+      .bigdata-box      { padding: 22px 18px !important; border-radius: 16px; gap: 16px; }
+      .bigdata-box .h   { font-size: 17px; line-height: 1.35; }
+
+      /* Mock product frame */
+      .mock-frame .body-area { padding: 14px; font-size: 12px; }
+
+      /* Inline padding overrides — high specificity via attribute selector + !important */
+      [style*="padding:48px 44px"]   { padding: 24px 18px !important; }
+      [style*="padding: 36px 40px"]  { padding: 22px 18px !important; }
+      [style*="padding:36px 44px"]   { padding: 22px 18px !important; }
+      [style*="padding: 32px 36px"]  { padding: 22px 18px !important; }
+      [style*="padding: 28px 32px"]  { padding: 20px 16px !important; }
+      [style*="padding:28px 26px"]   { padding: 20px 18px !important; }
+      [style*="padding:24px 22px"]   { padding: 18px 16px !important; }
+      [style*="padding:16px 22px"]   { padding: 12px 14px !important; }
+
+      /* Inline width overrides — fix 2-column flex breakage */
+      [style*="width:300px"] { width: 100% !important; flex-shrink: 1 !important; }
+      [style*="width:140px"] { width: auto !important; }
+
+      /* Mock Notion body 2-column → stack */
+      .mock-body-2col {
+        flex-direction: column !important;
+        gap: 16px !important;
+      }
+      .mock-body-2col h4 { font-size: 20px !important; }
+      .mock-body-2col p[style*="font-size:17px"] { font-size: 15px !important; line-height: 1.55 !important; }
+
+      /* Auto-refresh card 2-column → stack */
+      .auto-refresh-card {
+        flex-direction: column !important;
+        gap: 16px !important;
+      }
+      .auto-refresh-card h4 { font-size: 19px !important; line-height: 1.3 !important; }
+
+      /* Trust shift box — wrap on narrow */
+      .trust-shift-box {
+        flex-wrap: wrap !important;
+        gap: 12px !important;
+        padding: 14px 16px !important;
+      }
+      .trust-shift-box > div:last-child { margin-left: 0 !important; flex-basis: 100%; text-align: left !important; }
+
+      /* Force normal wrapping on inline nowrap headers */
+      [style*="white-space:nowrap"],
+      [style*="white-space: nowrap"] { white-space: normal !important; }
+
+      /* Force AKI bigdata-box stacking already (inline flex-direction:column 있음) — table 가로 스크롤 유지 OK */
+      .bigdata-box table { font-size: 12.5px !important; }
+
+      /* Global nav — keep brand only, hide sec links on narrow */
+      .global-nav .container-page { padding: 0 14px; }
+      .global-nav nav,
+      .global-nav .flex.items-center.gap-4 { display: none !important; }
+
+      /* Hero KPI strip — keep 2-col grid, tighten spacing */
+      #hero .grid { gap: 16px !important; padding-top: 28px !important; }
+      #hero .stat-num { font-size: 26px !important; }
+
+      /* §1 협업툴 4-stat card values — clamp inline 30px down */
+      [style*="font-size:30px"] { font-size: 22px !important; line-height: 1.1 !important; }
+
+      /* §2 결론 박스 inline padding — already caught by attribute selector */
+
+      /* Closing 3-KPI strip */
+      #closing .grid.grid-cols-3 { gap: 14px !important; }
+      #closing [style*="font-size:32px"] { font-size: 24px !important; }
+
+      /* Brand chips spacing */
+      .brand-chip { padding: 7px 13px; font-size: 13px; }
+
+      /* Funnel/flywheel inline SVG max-widths already responsive (viewBox) */
+
+      /* Mock Notion 우측 widget 텍스트 — 모바일에서 살짝 축소 */
+      .mock-widget-li { font-size: 13px !important; }
+    }
   </style>
 </head>
 <body class="font-text antialiased">
@@ -1012,7 +1135,7 @@
     <div class="mb-12" style="max-width:1024px; margin: 0 auto 48px;">
       <div class="text-center mb-10">
         <div class="t-caption-strong" style="color:#0066cc; letter-spacing:0.5px; text-transform:uppercase;">실제 사용 — 노션 시나리오</div>
-        <h3 class="t-display-md ff-display" style="max-width:1024px; margin:14px auto 0; line-height:1.30; white-space:nowrap;">
+        <h3 class="t-display-md ff-display" style="max-width:1024px; margin:14px auto 0; line-height:1.30;">
           한국 500만 노션 사용자가 가장 먼저 만나는 우리.
         </h3>
       </div>
@@ -1031,7 +1154,7 @@
         </div>
 
         <!-- Body = 2 column, ample Apple padding -->
-        <div style="display:flex; gap:28px; padding:48px 44px; align-items:flex-start; background:#fff;">
+        <div class="mock-body-2col" style="display:flex; gap:28px; padding:48px 44px; align-items:flex-start; background:#fff;">
 
           <!-- Left: Notion content (product photography 위치) -->
           <div style="flex:1; min-width:0;">
@@ -1087,7 +1210,7 @@
       </div>
 
       <!-- 자동 갱신 결과 카드 (Apple product card + Action Blue 액센트) -->
-      <div style="background:#ffffff; border-radius:22px; padding:36px 40px; box-shadow: 3px 5px 30px 0 rgba(0,0,0,0.22); display:flex; gap:28px; align-items:flex-start;">
+      <div class="auto-refresh-card" style="background:#ffffff; border-radius:22px; padding:36px 40px; box-shadow: 3px 5px 30px 0 rgba(0,0,0,0.22); display:flex; gap:28px; align-items:flex-start;">
 
         <!-- Left: 아이콘 + 라벨 -->
         <div style="flex-shrink:0; width:140px;">
@@ -1106,7 +1229,7 @@
           </p>
 
           <!-- 신뢰도 변화 시각 -->
-          <div style="display:flex; align-items:center; gap:20px; padding:18px 22px; background:#f5f5f7; border-radius:14px; margin-bottom:18px;">
+          <div class="trust-shift-box" style="display:flex; align-items:center; gap:20px; padding:18px 22px; background:#f5f5f7; border-radius:14px; margin-bottom:18px;">
             <div>
               <div style="font-size:11px; color:#aaa; letter-spacing:0.3px; text-transform:uppercase; margin-bottom:4px;">갱신 전</div>
               <div style="font-size:26px; font-weight:600; color:#aaa; letter-spacing:-0.5px; line-height:1.0;">64%</div>
